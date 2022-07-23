@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { MEDIA } from './MEDIA'
+import BooksPage from './pages/BooksPage'
+import HomePage from './pages/HomePage'
+import MediaDetailPage from './pages/MediaDetailPage'
+import MoviesPage from './pages/MoviesPage'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    // OPTION 1: Put the data in useState
+    // and pass it down through props
+    //const [mediaList, setMediaList] = useState(MEDIA)
+
+    return (
+        <div>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="books" element={<BooksPage/>} />
+                <Route path="movies" element={<MoviesPage />} />
+                <Route path="media/:mediaId" element={<MediaDetailPage />} />
+            </Routes>
+        </div>
+    )
 }
-
-export default App;
